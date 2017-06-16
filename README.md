@@ -2,12 +2,12 @@ acacia-confusa
 =====================================
 *Acacia confusa* is a perennial tree native to South-East Asia.
 
-# Installation
+## Installation
 1. Clone this repo;
 2. `npm install`
 
-# Develop
+## Develop
 `npm start`
 
-# Build
+## Build
 `npm run build`
