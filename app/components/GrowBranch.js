@@ -15,6 +15,7 @@ class GrowBranch extends React.Component{
     super (props)
     this.handleChange = this.handleChange.bind(this)
     this.addBranch = this.addBranch.bind(this)
+    this.deleteBranch = this.deleteBranch.bind(this)
     this.toggleFocus = this.toggleFocus.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
@@ -38,12 +39,18 @@ class GrowBranch extends React.Component{
   }
   addBranch (parent) {
     let state = this.state.acacia
-    console.log(parent)
     if (typeof parent === 'number') {
       state[parent].children = update(state[parent].children, {$push: [newBranch]})
     } else {
       state = update(state, {$push: [newBranch]})
     }
+    this.setState({
+      acacia: state
+    })
+  }
+  deleteBranch (index) {
+    let state = this.state.acacia
+    state = update(state, {$splice: [[index]]})
     this.setState({
       acacia: state
     })
@@ -85,6 +92,7 @@ class GrowBranch extends React.Component{
         expanded={branch.expanded}
         handleSubmit={(e) => this.handleSubmit(index, e)}
         handleChange={(e) => this.handleChange(index, e)}
+        deleteBranch={() => this.deleteBranch(index)}
         addBranch={this.addBranch}
         toggleFocus={() => this.toggleFocus(index)}
         toggleExpand={() => this.toggleExpand(index)}

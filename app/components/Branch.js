@@ -28,10 +28,13 @@ class Branch extends React.Component{
       <li key={this.props.index} className="list-group-item d-flex justify-content-between">
         <div className="pr-3"><i className="material-icons cursor-pointer" onClick={this.props.toggleExpand}>keyboard_arrow_down</i></div>
         <div style={{flex: 1}}>{this.props.description}</div>
+        <div><i className="material-icons cursor-pointer pl-3" onClick={() => this.props.deleteBranch(this.props.index)}>delete</i></div>
         <div><i className="material-icons cursor-pointer pl-3" onClick={() => this.props.addBranch(this.props.index)}>playlist_add</i></div>
         <div><i className="material-icons cursor-pointer pl-3" onClick={this.props.toggleFocus}>edit</i></div>
         <div className="w-100"></div>
-        <div className={this.props.expanded ? null : 'd-none'}><GrowBranch acacia={this.props.children}/></div>
+        <div className={this.props.expanded ? null : 'd-none'}>
+          <GrowBranch acacia={this.props.children}/>
+        </div>
       </li>
     )
     return branch
